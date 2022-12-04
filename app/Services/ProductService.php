@@ -10,7 +10,7 @@ class ProductService
     {
         $discount_in_percentage = null;
 
-		if ($category == 'boots' || $category == 'boots' && $sku == '000003'){
+		if ($category == 'boots' || ($category == 'boots' && $sku == '000003')){
 			$final_price = 0.3 * $price;
 			$discount_in_percentage = '30%';
 		} else if ($sku == '000003'){
