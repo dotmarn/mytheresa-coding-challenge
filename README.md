@@ -1,66 +1,171 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Installation
+Here is how you can run the project locally:
+1. Clone this repo
+    ```sh
+    git clone https://github.com/dotmarn/mytheresa-coding-challenge.git
+    ```
+1. Go into the project root directory
+    ```sh
+    cd mytheresa-coding-challenge
+    ```
+1. Copy .env.example file to .env file
+    ```sh
+    cp .env.example .env
+    ```
+1. Create database `coding_challenge` (you can change database name)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1. Go to `.env` file 
+    - set database credentials (`DB_DATABASE=glover_assessment`, `DB_USERNAME=root`, `DB_PASSWORD=`)
+    > Make sure to follow your database username and password
 
-## About Laravel
+1. Install PHP dependencies 
+    ```sh
+    composer install
+    ```
+1. Generate app key 
+    ```sh
+    php artisan key:generate
+    ```
+1. Run migration
+    ```
+    php artisan migrate
+    ```
+1. Run seeder
+    ```
+    php artisan db:seed
+    ```
+    this command will create default products and store it in the database
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Run server 
+    ```sh
+    php artisan serve
+    ``` 
+1. Run tests
+    ```sh
+    php artisan test
+    ``` 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## API Endpoints
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Fetch Products
+    ```sh
+    POST /api/products
+    ```
+    ### payload
+    ```json
+    {}
+    ```
+    ### sample response
+    ```json
+    {
+        "status": 200,
+        "message": "Records fetched successfully...",
+        "data": {
+            "current_page": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "sku": "000001",
+                    "name": "BV Lean leather ankle boots",
+                    "category": "boots",
+                    "price": {
+                        "final": 2670,
+                        "currency": "EUR",
+                        "original": "8900",
+                        "discount_percentage": "30%"
+                    },
+                    "deleted_at": null,
+                    "created_at": "2022-12-04T18:29:10.000000Z",
+                    "updated_at": "2022-12-04T18:31:12.000000Z"
+                },
+                {
+                    "id": 2,
+                    "sku": "000002",
+                    "name": "BV Lean leather ankle boots",
+                    "category": "boots",
+                    "price": {
+                        "final": 2970,
+                        "currency": "EUR",
+                        "original": "9900",
+                        "discount_percentage": "30%"
+                    },
+                    "deleted_at": null,
+                    "created_at": "2022-12-04T18:29:10.000000Z",
+                    "updated_at": "2022-12-04T18:31:12.000000Z"
+                },
+                {
+                    "id": 3,
+                    "sku": "000003",
+                    "name": "Ashlington leather ankle boots",
+                    "category": "boots",
+                    "price": {
+                        "final": 2130,
+                        "currency": "EUR",
+                        "original": "7100",
+                        "discount_percentage": "30%"
+                    },
+                    "deleted_at": null,
+                    "created_at": "2022-12-04T18:29:10.000000Z",
+                    "updated_at": "2022-12-04T18:31:12.000000Z"
+                },
+                {
+                    "id": 4,
+                    "sku": "000004",
+                    "name": "Naima embellished suede sandals",
+                    "category": "sandals",
+                    "price": {
+                        "final": 79500,
+                        "currency": "EUR",
+                        "original": "79500",
+                        "discount_percentage": null
+                    },
+                    "deleted_at": null,
+                    "created_at": "2022-12-04T18:29:10.000000Z",
+                    "updated_at": "2022-12-04T18:31:12.000000Z"
+                },
+                {
+                    "id": 5,
+                    "sku": "000005",
+                    "name": "Nathane leather sneakers",
+                    "category": "sneakers",
+                    "price": {
+                        "final": 5900,
+                        "currency": "EUR",
+                        "original": "5900",
+                        "discount_percentage": null
+                    },
+                    "deleted_at": null,
+                    "created_at": "2022-12-04T18:29:10.000000Z",
+                    "updated_at": "2022-12-04T18:31:12.000000Z"
+                }
+            ],
+            "first_page_url": "http://coding-challenge.test/api/products?page=1",
+            "from": 1,
+            "last_page": 1,
+            "last_page_url": "http://coding-challenge.test/api/products?page=1",
+            "links": [
+                {
+                    "url": null,
+                    "label": "&laquo; Previous",
+                    "active": false
+                },
+                {
+                    "url": "http://coding-challenge.test/api/products?page=1",
+                    "label": "1",
+                    "active": true
+                },
+                {
+                    "url": null,
+                    "label": "Next &raquo;",
+                    "active": false
+                }
+            ],
+            "next_page_url": null,
+            "path": "http://coding-challenge.test/api/products",
+            "per_page": 5,
+            "prev_page_url": null,
+            "to": 5,
+            "total": 5
+        }
+    }
+    ```
