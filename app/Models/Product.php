@@ -9,4 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $guarded = ['id'];
+    
+    protected $casts = [
+        'price' => 'array',
+    ];
 }
