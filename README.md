@@ -55,6 +55,14 @@ Here is how you can run the project locally:
     ```json
     {}
     ```
+
+    ### params (Optional)
+    ```json
+    {
+        "filter_by": "boots",
+        "priceLessThan": 2000
+    }
+    ```
     ### sample response
     ```json
     {
