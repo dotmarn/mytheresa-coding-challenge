@@ -2,8 +2,9 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Http\Response;
+use Tests\TestCase;
 use App\Services\ProductService;
-use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TestCase
 {
@@ -45,5 +46,10 @@ class ProductTest extends TestCase
         $result = (new ProductService())->calculateDiscount($category, $sku, $price);
 
         $this->assertEquals(1500, $result->final_price);
+    }
+
+    public function test_that_fetching_products_is_successful()
+    {
+        $this->get(route('fetch-products'))->assertStatus(Response::HTTP_OK);
     }
 }
