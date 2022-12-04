@@ -36,4 +36,14 @@ class ProductTest extends TestCase
 
         $this->assertEquals(1500, $result->final_price);
     }
+
+    public function test_that_the_highest_percentage_discount_is_applied()
+    {
+        $sku = "000003";
+        $category = "boots";
+        $price = 5000;
+        $result = (new ProductService())->calculateDiscount($category, $sku, $price);
+
+        $this->assertEquals(1500, $result->final_price);
+    }
 }
